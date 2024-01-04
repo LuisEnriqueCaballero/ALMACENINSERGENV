@@ -1,0 +1,41 @@
+
+$(document).ready(function(){
+    $('#bntReportePersonal').click(function(){
+        VentanReportes();
+        $('#ReportePersonal').load('Reporte/ReportePersonal.php');
+        $('#ReportePersonal').show(1000);
+    })
+    $('#bntReporteVehiculo').click(function(){
+        VentanReportes();
+        $('#ReporteVehiculo').load('Reporte/ReporteVehiculo.php');
+        $('#ReporteVehiculo').show(1000);
+    })
+    $('#bntReporteCliente').click(function(){
+        VentanReportes();
+        $('#ReporteCliente').load('Reporte/ReporteCliente.php');
+        $('#ReporteCliente').show();
+    })
+    $('#bntReporteProveedor').click(function(){
+        VentanReportes();
+        $('#ReporteProveedor').load('Reporte/ReporteProveedor.php');
+        $('#ReporteProveedor').show();
+    })
+    $('#bntReporteCuenta').click(function(){
+        VentanReportes();
+        $('#ReporteCuenta').load('Reporte/ReporteCuenta.php');
+        $('#ReporteCuenta').show();
+    })
+    $('#bntReporteEntregado').click(function(){
+        VentanReportes();
+        $('#ReporteEntregado').load('Reporte/ReporteVehiculoEntr.php');
+        $('#ReporteEntregado').show();
+    })
+})
+function VentanReportes(){
+    $('#ReportePersonal').hide();
+    $('#ReporteVehiculo').hide();
+    $('#ReporteCliente').hide();
+    $('#ReporteProveedor').hide();
+    $('#ReporteCuenta').hide();
+    $('#ReporteEntregado').hide();
+}

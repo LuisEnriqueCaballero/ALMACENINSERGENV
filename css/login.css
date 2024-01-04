@@ -1,0 +1,96 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('../img/0E1A5188.JPG');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.panel_login{
+    display: flex;
+    flex-flow: wrap column;
+    align-content: center;
+    justify-content: center;
+    width: 500px;
+    height: 400px;
+    border: 1px solid #FBC658;
+    border-radius: 5px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    row-gap: 30px;
+    color:aliceblue;
+
+}
+.panel_login img{
+    width: 120px;
+    height: 120px;
+    margin: auto;
+    
+}
+.formulario{
+    display: flex;
+    flex-flow: wrap column;
+    row-gap: 10px;
+}
+.formulario
+input{
+    height: 35px;
+    width: 350px;
+    padding: 10px;
+    padding-left: 30px;
+    color: #FBC658;
+    font-size: 16px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 1px solid #ffffff;
+}
+.correo{
+    display: flex;
+    flex-flow: wrap column;
+    row-gap: 5px;
+    position: relative;
+}
+.fa-envelope{
+    position: absolute;
+    top:46px;
+    left: 10px;
+    color: #ffffff;
+}
+.password{
+    display: flex;
+    flex-flow: wrap column;
+    row-gap: 5px;
+    position: relative;
+
+}
+.fa-key{
+    position: absolute;
+    top:46px;
+    left: 10px;
+    color: #ffffff;
+}
+.btn{
+    width: 60%;
+    
+    margin: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    padding-right: 10px;
+}
