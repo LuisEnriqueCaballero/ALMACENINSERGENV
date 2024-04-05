@@ -1,10 +1,12 @@
+// PROCESO PARA VALIDAR,INSERT,UPDATE,VIEWS,DELETE
+// PROCESO DE VALIDACION
 $(document).ready(function(){
     $('#boton').click(function(){
         dato=$('#formulario').serialize();
         $.ajax({
             type:"POST",
             data:dato,
-            url:'proceso/Usuario/validarUsuario.php',
+            url:'./Controller/ControllUsuario.php?ope=6',
             success:function(r){
                 if(r==1){
                     window.location='view/index.php';
@@ -15,8 +17,7 @@ $(document).ready(function(){
         })
     })
 })
-
-
+// PROCESO DE INSERTAR DATOS
 $(document).ready(function(){
     // proceso de insertar datos
     $("#nuevo").click(function(){
@@ -24,7 +25,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:'../proceso/Usuario/insertUsuario.php',
+            url:'../Controller/ControllUsuario.php?ope=1',
             success:function(r){
                 if(r==2){
                     swal({
@@ -50,13 +51,13 @@ $(document).ready(function(){
             }
         })
     })
-    // proceso de actualizar datos
+    // PROCESO DE UPDATE DATOS
     $("#update").click(function(){
         datos=$("#form_update").serialize();
         $.ajax({
             type:"POST",
             data:datos,
-            url:"../proceso/Usuario/UpdateUsuario.php",
+            url:"../Controller/ControllUsuario.php?ope=2",
             success:function(r){
                 if(r==1){
                     $('#bdUsuario').load("Usuario/bd_Usuario.php");
@@ -76,11 +77,12 @@ $(document).ready(function(){
 $(document).ready(function(){
     $('#bdUsuario').load("Usuario/bd_Usuario.php");
 })
+// PARA GET DATOS
 function GetUsuario(idUsuario){
     $.ajax({
         type:"POST",
         data:'id='+idUsuario,
-        url:"../proceso/Usuario/GetUsuario.php",
+        url:"../Controller/ControllUsuario.php?ope=3",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#ID').val(datos['ID_USUARIO']);
@@ -92,11 +94,12 @@ function GetUsuario(idUsuario){
         }
     })
 }
+// PROCESO DE VIEWS
 function viewstUsuario(idUsuario){
     $.ajax({
         type:"POST",
         data:'id='+idUsuario,
-        url:"../proceso/Usuario/GetUsuario.php",
+        url:"../Controller/ControllUsuario.php?ope=5",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#IDV').html(datos['ID_USUARIO']);
@@ -108,7 +111,7 @@ function viewstUsuario(idUsuario){
         }
     })
 }
-// proceso eliminar datos
+// PROCESO DE DELETE
 function DeleteUsuario(idUsuario){
     swal({
         title: "¿Seguro que quiere eliminar este dato?",
@@ -122,7 +125,7 @@ function DeleteUsuario(idUsuario){
             $.ajax({
                 type:"POST",
                 data:"idUsuario="+idUsuario,
-                url:"../proceso/Usuario/DeleteUsuario.php",
+                url:"../Controller/ControllUsuario.php?ope=4",
                 success:function(r){
                     if(r==1){
                         $('#bdUsuario').load("Usuario/bd_Usuario.php");

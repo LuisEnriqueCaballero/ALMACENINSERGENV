@@ -1,7 +1,7 @@
 <?php
 class Conexion{
   private $servidor='localhost';
-  private $namedatabase='nuevo_dbinsergenv';
+  private $namedatabase='db_insergenv';
   private $usuario='root';
   private $password='';
 
