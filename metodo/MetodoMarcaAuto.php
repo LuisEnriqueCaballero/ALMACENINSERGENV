@@ -1,19 +1,20 @@
 <?php
+include_once '../config/config.php';
 Class MetodoMarcaauto{
-    public function insertaMarca($datos){
+    public function insertaMarca($marca){
         $conexion=new Conexion();
         $con=$conexion->Conectar();
 
-        $query="INSERT INTO marcasauto(MARCA) VALUES('$datos[0]')";
+        $query="INSERT INTO marcasauto(MARCA) VALUES('$marca')";
         $consulta=mysqli_query($con,$query);
         return $consulta;
     }
 
-    public function UpdateMarca($datos){
+    public function UpdateMarca($id,$marca){
         $conexion=new Conexion();
         $con=$conexion->Conectar();
 
-        $query="UPDATE marcasauto SET MARCA='$datos[0]' WHERE ID_MARCA='$datos[1]'";
+        $query="UPDATE marcasauto SET MARCA='$marca' WHERE ID_MARCA='$id'";
         $consulta=mysqli_query($con,$query);
         return $consulta;
     }

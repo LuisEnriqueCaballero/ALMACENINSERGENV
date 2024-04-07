@@ -1,19 +1,20 @@
 <?php
+include_once '../config/config.php';
 Class MetodoBanco{
-    public function insertaBanco($datos){
+    public function insertaBanco($banco){
         $conexion=new Conexion();
         $con=$conexion->Conectar();
 
-        $query="INSERT INTO banco(nombre_banco) VALUES('$datos[0]')";
+        $query="INSERT INTO banco(nombre_banco) VALUES('$banco')";
         $consulta=mysqli_query($con,$query);
         return $consulta;
     }
 
-    public function UpdateBanco($datos){
+    public function UpdateBanco($idbanco,$banco){
         $conexion=new Conexion();
         $con=$conexion->Conectar();
 
-        $query="UPDATE banco SET nombre_banco='$datos[0]' WHERE id_banco='$datos[1]'";
+        $query="UPDATE banco SET nombre_banco='$banco' WHERE id_banco='$idbanco'";
         $consulta=mysqli_query($con,$query);
         return $consulta;
     }

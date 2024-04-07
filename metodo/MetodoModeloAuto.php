@@ -1,19 +1,19 @@
 <?php
+include_once '../config/config.php';
 Class MetodoModeloauto{
-    public function insertaModelo($datos){
+    public function insertaModelo($marca,$modelo){
         $conexion=new Conexion();
         $con=$conexion->Conectar();
-
-        $query="INSERT INTO modeloauto(ID_MARCA,MODELO) VALUES('$datos[0]','$datos[1]')";
+        $query="INSERT INTO modeloauto(ID_MARCA,MODELO) VALUES('$marca','$modelo')";
         $consulta=mysqli_query($con,$query);
         return $consulta;
     }
 
-    public function UpdateModelo($datos){
+    public function UpdateModelo($id,$marca,$modelo){
         $conexion=new Conexion();
         $con=$conexion->Conectar();
 
-        $query="UPDATE modeloauto SET ID_MARCA='$datos[0]', MODELO='$datos[1]' WHERE ID_MODELO='$datos[2]'";
+        $query="UPDATE modeloauto SET ID_MARCA='$marca', MODELO='$modelo' WHERE ID_MODELO='$id'";
         $consulta=mysqli_query($con,$query);
         return $consulta;
     }

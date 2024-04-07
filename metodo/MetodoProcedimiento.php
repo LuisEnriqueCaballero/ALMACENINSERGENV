@@ -1,20 +1,21 @@
 <?php
+include_once '../config/config.php';
 Class SubProcesoMetodo{
-    public function InsertDatos($datos){
+    public function InsertDatos($proceso,$subproceso){
         $conexion=new Conexion();
         $con=$conexion->Conectar();
 
         $query="INSERT INTO subproceso_auto(ID_PROCESO,DESCRIPCION_SUBPROCESO)
-               VALUES('$datos[0]','$datos[1]')";
+               VALUES('$proceso','$subproceso')";
         $consulta=mysqli_query($con,$query);
         return $consulta;     
     }
 
-    public function Updatedatos($datos){
+    public function Updatedatos($id,$proceso,$subproceso){
         $conexion=new Conexion();
         $con=$conexion->Conectar();
 
-        $query="UPDATE subproceso_auto SET ID_PROCESO='$datos[0]',DESCRIPCION_SUBPROCESO='$datos[1]' WHERE ID_SUBPROCESO='$datos[2]'";
+        $query="UPDATE subproceso_auto SET ID_PROCESO='$proceso',DESCRIPCION_SUBPROCESO='$subproceso' WHERE ID_SUBPROCESO='$id'";
         $consulta=mysqli_query($con,$query);
         return $consulta; 
     }

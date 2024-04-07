@@ -4,7 +4,7 @@ $(document).ready(function(){
         $.ajax({
             type:'POST',
             data:dato,
-            url:'../proceso/Unidad/insertUnidad.php',
+            url:'../Controller/ControllMedida.php?ope=1',
             success:function(r){
                 if(r==1){
                 $("#form_nuevo")[0].reset();
@@ -31,7 +31,7 @@ $(document).ready(function(){
         $.ajax({
             type:'POST',
             data:dato,
-            url:'../proceso/Unidad/updateUnidad.php',
+            url:'../Controller/ControllMedida.php?ope=2',
             success:function(r){
                 if(r==1){
                 $('#bd_Unidad').load("UnidadMedida/bd_Unidad.php");
@@ -55,7 +55,7 @@ function GetUnidad(idunidad){
     $.ajax({
         type:'POST',
         data:'id='+idunidad,
-        url:'../proceso/Unidad/GetUnidad.php',
+        url:'../Controller/ControllMedida.php?ope=3',
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#id').val(datos['id_unidadmedida']);
@@ -77,7 +77,7 @@ function DeleteUnidad(idunidad){
             $.ajax({
                 type:'POST',
                 data:'idUnidad='+idunidad,
-                url:'../proceso/Unidad/DeleteUnidad.php',
+                url:'../Controller/ControllMedida.php?ope=4',
                 success:function(r){
                     if(r==1){
                         $('#bd_Unidad').load("UnidadMedida/bd_Unidad.php");
