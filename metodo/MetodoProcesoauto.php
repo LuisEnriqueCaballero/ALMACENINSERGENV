@@ -1,10 +1,10 @@
 <?php
+include_once '../config/config.php';
 class MetodoProcesoauto{
-    public function nuevoproceso($datos){
+    public function nuevoproceso($descriptcion){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
-
-        $sql="INSERT INTO proceso_auto(DESCRIPCION_PROCESO) VALUE('$datos[0]')";
+        $sql="INSERT INTO proceso_auto(DESCRIPCION_PROCESO) VALUE('$descriptcion')";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }
@@ -20,10 +20,10 @@ class MetodoProcesoauto{
         );
         return $datos;
     }
-    public function actualizadatos($datos){
+    public function actualizadatos($descripcion,$id){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
-        $sql="UPDATE proceso_auto SET DESCRIPCION_PROCESO='$datos[0]' WHERE ID_PROCESO ='$datos[1]'";
+        $sql="UPDATE proceso_auto SET DESCRIPCION_PROCESO='$descripcion' WHERE ID_PROCESO ='$id'";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }

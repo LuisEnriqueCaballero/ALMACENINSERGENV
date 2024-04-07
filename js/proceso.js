@@ -5,7 +5,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:'../proceso/proceso_auto/nuevoproceso.php',
+            url:'../Controller/ControllProceso.php?ope=1',
             success:function(r){
                 if(r==1){
                     $('#form_nuevo')[0].reset();
@@ -28,7 +28,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:"../proceso/proceso_auto/updateproceso.php",
+            url:"../Controller/ControllProceso.php?ope=2",
             success:function(r){
                 if(r==1){
                     $('#bdproceso').load('proceso/bd_proceso.php');
@@ -53,7 +53,7 @@ function ObtenerDato(idproceso){
     $.ajax({
         type:"POST",
         data:'id='+idproceso,
-        url:"../proceso/proceso_auto/obtenerdatos.php",
+        url:"../Controller/ControllProceso.php?ope=3",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#id').val(datos['ID_PROCESO']);
@@ -75,7 +75,7 @@ function deletedato(idproceso){
             $.ajax({
                 type:"POST",
             data:"idproceso="+idproceso,
-            url:"../proceso/proceso_auto/deletedato.php",
+            url:"../Controller/ControllProceso.php?ope=4",
                 success:function(r){
                     if(r==1){
                         $('#bdproceso').load('proceso/bd_proceso.php');

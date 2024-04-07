@@ -5,7 +5,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:'../proceso/Banco/insertBanco.php',
+            url:'../Controller/ControllBanco.php?ope=1',
             success:function(r){
                 if(r==1){
                     $('#form_nuevo')[0].reset();
@@ -23,7 +23,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:"../proceso/Banco/updateBanco.php",
+            url:"../Controller/ControllBanco.php?ope=2",
             success:function(r){
                 if(r==1){
                     $('#bdproceso').load('banco/bd_banco.php');
@@ -43,7 +43,7 @@ function ObtenerDato(idbanco){
     $.ajax({
         type:"POST",
         data:'id='+idbanco,
-        url:"../proceso/Banco/obtenerBanco.php",
+        url:"../Controller/ControllBanco.php?ope=3",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#id').val(datos['id_banco']);
@@ -56,7 +56,7 @@ function deletedato(id){
     $.ajax({
         type:"POST",
         data:"idbanco="+id,
-        url:"../proceso/Banco/deleteBanco.php",
+        url:"../Controller/ControllBanco.php?ope=4",
         success:function(r){
             if(r==1){
                 $('#bdproceso').load('banco/bd_banco.php');

@@ -1,10 +1,11 @@
 <?php
+include_once '../config/config.php';
 class MetodoAreaTrabajo{
-    public function InsertArea($datos){
+    public function InsertArea($description){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
 
-        $sql="INSERT INTO area(DESCRIPCION) VALUES('$datos[0]')";
+        $sql="INSERT INTO area(DESCRIPCION) VALUES('$description')";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }
@@ -20,10 +21,10 @@ class MetodoAreaTrabajo{
         );
         return $datos;
     }
-    public function UpdateArea($datos){
+    public function UpdateArea($id,$description){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
-        $sql="UPDATE area SET DESCRIPCION='$datos[0]' WHERE ID_AREA ='$datos[1]'";
+        $sql="UPDATE area SET DESCRIPCION='$description' WHERE ID_AREA ='$id'";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }

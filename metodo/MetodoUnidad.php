@@ -1,10 +1,11 @@
 <?php
+include_once '../config/config.php';
 class MetodoUnidad{
-    public function InsertUnidad($datos){
+    public function InsertUnidad($description){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
 
-        $sql="INSERT INTO unidad_medida(nombre_unidadmedida) VALUES('$datos[0]')";
+        $sql="INSERT INTO unidad_medida(nombre_unidadmedida) VALUES('$description')";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }
@@ -20,10 +21,10 @@ class MetodoUnidad{
         );
         return $datos;
     }
-    public function UpdateUnidad($datos){
+    public function UpdateUnidad($id,$description){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
-        $sql="UPDATE unidad_medida SET nombre_unidadmedida='$datos[0]' WHERE id_unidadmedida  ='$datos[1]'";
+        $sql="UPDATE unidad_medida SET nombre_unidadmedida='$description' WHERE id_unidadmedida  ='$id'";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }

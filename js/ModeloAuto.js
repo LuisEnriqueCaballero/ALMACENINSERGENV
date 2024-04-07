@@ -4,7 +4,7 @@ $(document).ready(function(){
         $.ajax({
             type:'POST',
             data:datos,
-            url:'../proceso/ModeloAuto/insertaModelo.php',
+            url:'../Controller/ControllModeloAuto.php?ope=1',
             success:function(r){
                 if(r==1){
                     $('#formulario')[0].reset();
@@ -21,7 +21,7 @@ $(document).ready(function(){
         $.ajax({
             type:'POST',
             data:datos,
-            url:'../proceso/ModeloAuto/updateModelo.php',
+            url:'../Controller/ControllModeloAuto.php?ope=2',
             success:function(r){
                 if(r==1){
                     $('#bdproceso').load('modelo_auto/bd_modelo.php');
@@ -41,7 +41,7 @@ function obtenerdatos(id){
     $.ajax({
         type:'POST',
         data:'idmodelo='+id,
-        url:'../proceso/ModeloAuto/obtenerDato.php',
+        url:'../Controller/ControllModeloAuto.php?ope=3',
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#id').val(datos['ID_MODELO']);
@@ -54,7 +54,7 @@ function Eliminardato(idmodelo){
     $.ajax({
         type:'POST',
         data:'id='+idmodelo,
-        url:'../proceso/ModeloAuto/deleteModelo.php',
+        url:'../Controller/ControllModeloAuto.php?ope=4',
         success:function(r){
             if(r==1){
                 $('#bdproceso').load('modelo_auto/bd_modelo.php');

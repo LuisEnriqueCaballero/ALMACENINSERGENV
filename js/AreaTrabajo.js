@@ -4,7 +4,7 @@ $(document).ready(function(){
         $.ajax({
             type:'POST',
             data:dato,
-            url:'../proceso/AreaTrabajo/insertArea.php',
+            url:'../Controller/ControllArea.php?ope=1',
             success:function(r){
                 if(r==1){
                 $("#form_nuevo")[0].reset();
@@ -26,7 +26,7 @@ $(document).ready(function(){
         $.ajax({
             type:'POST',
             data:dato,
-            url:'../proceso/AreaTrabajo/UpdateArea.php',
+            url:'../Controller/ControllArea.php?ope=2',
             success:function(r){
                 if(r==1){
                     $('#area').load("AreaTrabajo/bd_area.php")
@@ -52,7 +52,7 @@ function obtenerdatos(idarea){
     $.ajax({
         type:'POST',
         data:'id='+idarea,
-        url:'../proceso/AreaTrabajo/GetArea.php',
+        url:'../Controller/ControllArea.php?ope=3',
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#ID').val(datos['ID_AREA']);
@@ -74,7 +74,7 @@ function EliminarDato(idarea){
             $.ajax({
                 type:'POST',
                 data:'idarea='+idarea,
-                url:'../proceso/AreaTrabajo/DeleteArea.php',
+                url:'../Controller/ControllArea.php?ope=4',
                 success:function(r){
                     if(r==1){
                         $('#area').load("AreaTrabajo/bd_area.php")

@@ -4,7 +4,7 @@ $(document).ready(function(){
         $.ajax({
             type:'POST',
             data:datos,
-            url:'../proceso/MarcaAuto/insertarMarca.php',
+            url:'../Controller/ControllMarcaAuto.php?ope=1',
             success:function(r){
                 if(r==1){
                     $('#form_nuevo')[0].reset();
@@ -21,7 +21,7 @@ $(document).ready(function(){
         $.ajax({
             type:'POST',
             data:datos,
-            url:'../proceso/MarcaAuto/updateMarca.php',
+            url:'../Controller/ControllMarcaAuto.php?ope=2',
             success:function(r){
                 if(r==1){
                     $('#bdproceso').load('marca_auto/bd_marca.php');
@@ -41,7 +41,7 @@ function obtenerdatos(id){
     $.ajax({
         type:'POST',
         data:'idmarca='+id,
-        url:'../proceso/MarcaAuto/obtenerMarca.php',
+        url:'../Controller/ControllMarcaAuto.php?ope=3',
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#id').val(datos['ID_MARCA']);
@@ -53,7 +53,7 @@ function Eliminardato(idmarca){
     $.ajax({
         type:'POST',
         data:'id='+idmarca,
-        url:'../proceso/MarcaAuto/deteleMarca.php',
+        url:'../Controller/ControllMarcaAuto.php?ope=4',
         success:function(r){
             if(r==1){
                 $('#bdproceso').load('marca_auto/bd_marca.php');
