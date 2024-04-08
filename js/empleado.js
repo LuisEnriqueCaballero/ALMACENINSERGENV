@@ -5,7 +5,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:'../proceso/Empleado/InsertEmpleado.php',
+            url:'../Controller/ControllEmpleado.php?ope=1',
             success:function(r){
                 if(r==1){
                     $('#formulario')[0].reset();
@@ -28,7 +28,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:"../proceso/Empleado/UpdateEmpleado.php",
+            url:"../Controller/ControllEmpleado.php?ope=2",
             success:function(r){
                 if(r==1){
                     $('#bdproceso').load('empleado/bd_empleado.php');
@@ -52,7 +52,7 @@ function ObtenerEmpleado(idEmpleado){
     $.ajax({
         type:"POST",
         data:'id='+idEmpleado,
-        url:"../proceso/Empleado/GetEmpleado.php",
+        url:"../Controller/ControllEmpleado.php?ope=3",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#id').val(datos['ID_TRABAJADOR']);
@@ -85,7 +85,7 @@ function ViewsEmpleado(idEmpleado){
     $.ajax({
         type:"POST",
         data:'id='+idEmpleado,
-        url:"../proceso/Empleado/GetEmpleado.php",
+        url:"../Controller/ControllEmpleado.php?ope=5",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#idV').html(datos['ID_TRABAJADOR']);
@@ -127,7 +127,7 @@ function DeleteEmpleado(idEmpleado){
             $.ajax({
                 type:"POST",
                 data:"idEmpleado="+idEmpleado,
-                url:"../proceso/Empleado/DeleteEmpleado.php",
+                url:"../Controller/ControllEmpleado.php?ope=4",
                 success:function(r){
                     if(r==1){
                         $('#bdproceso').load('empleado/bd_empleado.php');

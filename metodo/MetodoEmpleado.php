@@ -1,7 +1,8 @@
 <?php
+include_once '../config/config.php';
 class MetodoEmpleado
 {
-    public function InsertEmpleado($datos)
+    public function InsertEmpleado($document,$numero,$nombre,$apellido,$edad,$sexo,$telefono,$celular,$area,$departamento,$provincia,$distrito,$direccion,$hijo,$planilla,$fecha_nacim,$fehc_ingre,$banco,$cuenta,$estado)
     {
         $conexion = new Conexion();
         $con = $conexion->Conectar();
@@ -26,58 +27,38 @@ class MetodoEmpleado
                                          BANCO,
                                          CUENTA,
                                          ESTADO) 
-                                         VALUES(
-                                            '$datos[0]',
-                                            '$datos[1]',
-                                            '$datos[2]',
-                                            '$datos[3]',
-                                            '$datos[4]',
-                                            '$datos[5]',
-                                            '$datos[6]',
-                                            '$datos[7]',
-                                            '$datos[8]',
-                                            '$datos[9]',
-                                            '$datos[10]',
-                                            '$datos[11]',
-                                            '$datos[12]',
-                                            '$datos[13]',
-                                            '$datos[14]',
-                                            '$datos[15]',
-                                            '$datos[16]',
-                                            '$datos[17]',
-                                            '$datos[18]',
-                                            '$datos[19]')";
+                                         VALUES('$document','$numero','$nombre','$apellido','$edad','$sexo','$telefono','$celular','$area','$departamento','$provincia','$distrito','$direccion','$hijo','$planilla','$fecha_nacim','$fehc_ingre','$banco','$cuenta','$estado')";
         $consulta = mysqli_query($con, $query);
         return $consulta;
     }
 
-    public function UpdateEmpleado($datos)
+    public function UpdateEmpleado($id,$document,$numero,$nombre,$apellido,$edad,$sexo,$telefono,$celular,$area,$departamento,$provincia,$distrito,$direccion,$hijo,$planilla,$fecha_nacim,$fehc_ingre,$banco,$cuenta,$estado)
     {
         $conexion = new Conexion();
         $con = $conexion->Conectar();
 
         $query = "UPDATE trabajadore SET
-                                   TIPO_DOCUMENTO='$datos[0]',
-                                   NUMERO_DOCUMENTO='$datos[1]',
-                                   NOMBRE='$datos[2]',
-                                   APELLIDO='$datos[3]',
-                                   EDAD='$datos[4]',
-                                   SEXO='$datos[5]',
-                                   TELEFONO='$datos[6]',
-                                   CELULAR='$datos[7]',
-                                   AREA_TRABAJO='$datos[8]',
-                                   ID_DEPARTAMENTO='$datos[9]',
-                                   ID_PROVINCIA='$datos[10]',
-                                   ID_DISTRITO='$datos[11]',
-                                   DIRECCION='$datos[12]',
-                                   NUMERO_HIJO_MENOR='$datos[13]',
-                                   PLANILLA='$datos[14]',
-                                   FECHA_CUMPLEANIO='$datos[15]',
-                                   FECHA_INGRESO='$datos[16]',
-                                   BANCO='$datos[17]',
-                                   CUENTA='$datos[18]',
-                                   ESTADO='$datos[19]'
-                                   WHERE ID_TRABAJADOR='$datos[20]'";
+                                   TIPO_DOCUMENTO='$document',
+                                   NUMERO_DOCUMENTO='$numero',
+                                   NOMBRE='$nombre',
+                                   APELLIDO='$apellido',
+                                   EDAD='$edad',
+                                   SEXO='$sexo',
+                                   TELEFONO='$telefono',
+                                   CELULAR='$celular',
+                                   AREA_TRABAJO='$area',
+                                   ID_DEPARTAMENTO='$departamento',
+                                   ID_PROVINCIA='$provincia',
+                                   ID_DISTRITO='$distrito',
+                                   DIRECCION='$direccion',
+                                   NUMERO_HIJO_MENOR='$hijo',
+                                   PLANILLA='$planilla',
+                                   FECHA_CUMPLEANIO='$fecha_nacim',
+                                   FECHA_INGRESO='$fehc_ingre',
+                                   BANCO='$banco',
+                                   CUENTA='$cuenta',
+                                   ESTADO='$estado'
+                                   WHERE ID_TRABAJADOR='$id'";
         $consulta = mysqli_query($con, $query);
         return $consulta;
     }

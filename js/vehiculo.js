@@ -5,7 +5,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:'../proceso/Vehiculo/InsertVehiculo.php',
+            url:'../Controller/ControllVehiculo.php?ope=1',
             success:function(r){
                 if(r==2){
                     swal({
@@ -36,7 +36,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:"../proceso/Vehiculo/UpdateVehiculo.php",
+            url:"../Controller/ControllVehiculo.php?ope=2",
             success:function(r){
                 if(r==1){
                     $('#bdproceso').load('vehiculo/bd_vehiculo.php');
@@ -73,7 +73,7 @@ function ObtenerVehiculo(idVehiculo){
     $.ajax({
         type:"POST",
         data:'id='+idVehiculo,
-        url:"../proceso/Vehiculo/GetVehiculo.php",
+        url:"../Controller/ControllVehiculo.php?ope=3",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#ID').val(datos['ID_VEHICULO']);
@@ -101,7 +101,7 @@ function viewsVehiculo(idVehiculo){
     $.ajax({
         type:"POST",
         data:'id='+idVehiculo,
-        url:"../proceso/Vehiculo/GetVehiculo.php",
+        url:"../Controller/ControllVehiculo.php?ope=5",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#IDV').html(datos['ID_VEHICULO']);
@@ -139,7 +139,7 @@ function DeleteVehiculo(idVehiculo){
             $.ajax({
                 type:"POST",
                 data:"idVehiculo="+idVehiculo,
-                url:"../proceso/Vehiculo/DeleteVehiculo.php",
+                url:"../Controller/ControllVehiculo.php?ope=4",
                 success:function(r){
                     if(r==1){
                         $('#bdproceso').load('vehiculo/bd_vehiculo.php');

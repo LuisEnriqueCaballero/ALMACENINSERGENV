@@ -1,71 +1,37 @@
 <?php
+include_once '../config/config.php';
 class MetodoVehiculo
 {
-    public function InsertVehiculo($datos)
+    public function InsertVehiculo($id_cliente,$placa,$marca,$modelo,$color,$motor,$vin,$chasis,$combustible,$vehiculo,$ingreso,$fabricacion,$anio,$estado)
     {
         $conexion = new Conexion();
         $con = $conexion->Conectar();
-        $consulta1 = "SELECT * FROM vehiculo WHERE NUMERO_PLACA='$datos[1]'";
-        $query1 = mysqli_query($con, $consulta1);
-        $numrow = mysqli_num_rows($query1);
-        if ($numrow > 0) {
-            return 2;
-        } else {
-            $query = "INSERT INTO vehiculo (ID_CLIENTE,
-                                      NUMERO_PLACA,
-                                      ID_MARCAR,
-                                      ID_MODELO,
-                                      COLOR_INGRESO,
-                                      NUMERO_MOTOR,
-                                      SERIE_VIN,
-                                      CHASIS,
-                                      TIPO_COMBUTIBLE,
-                                      TIPO_VEHICULO,
-                                      FECHA_INGRESO,
-                                      ANIO_FABRICACION,
-                                      ANIO_MODELO,
-                                      ESTADO) 
-                                         VALUES(
-                                            '$datos[0]',
-                                            '$datos[1]',
-                                            '$datos[2]',
-                                            '$datos[3]',
-                                            '$datos[4]',
-                                            '$datos[5]',
-                                            '$datos[6]',
-                                            '$datos[7]',
-                                            '$datos[8]',
-                                            '$datos[9]',
-                                            '$datos[10]',
-                                            '$datos[11]',
-                                            '$datos[12]',
-                                            '$datos[13]')";
-            $consulta = mysqli_query($con, $query);
-            return $consulta;
-        }
+        $query="INSERT INTO vehiculo (ID_CLIENTE,NUMERO_PLACA,ID_MARCAR,ID_MODELO,COLOR_INGRESO,NUMERO_MOTOR,SERIE_VIN,CHASIS,TIPO_COMBUTIBLE,TIPO_VEHICULO,FECHA_INGRESO,ANIO_FABRICACION,ANIO_MODELO,ESTADO) VALUES('$id_cliente','$placa','$marca','$modelo','$color','$motor','$vin','$chasis','$combustible','$vehiculo','$ingreso','$fabricacion','$anio','$estado')";
+        $resultado = mysqli_query($con, $query);
+        return $resultado;
     }
 
-    public function UpdateVehiculo($datos)
+    public function UpdateVehiculo($id,$id_cliente,$placa,$marca,$modelo,$color,$motor,$vin,$chasis,$combustible,$vehiculo,$ingreso,$fabricacion,$anio,$estado)
     {
         $conexion = new Conexion();
         $con = $conexion->Conectar();
 
         $query = "UPDATE vehiculo SET
-                                   ID_CLIENTE='$datos[0]',
-                                   NUMERO_PLACA='$datos[1]',
-                                   ID_MARCAR='$datos[2]',
-                                   ID_MODELO='$datos[3]',
-                                   COLOR_INGRESO='$datos[4]',
-                                   NUMERO_MOTOR='$datos[5]',
-                                   SERIE_VIN='$datos[6]',
-                                   CHASIS='$datos[7]',
-                                   TIPO_COMBUTIBLE='$datos[8]',
-                                   TIPO_VEHICULO='$datos[9]',
-                                   FECHA_INGRESO='$datos[10]',
-                                   FECHA_SALIDA='$datos[11]',
-                                   ANIO_MODELO='$datos[12]',
-                                   ESTADO='$datos[13]'
-                                   WHERE ID_VEHICULO='$datos[14]'";
+                                   ID_CLIENTE='$id_cliente',
+                                   NUMERO_PLACA='$placa',
+                                   ID_MARCAR='$marca',
+                                   ID_MODELO='$modelo',
+                                   COLOR_INGRESO='$color',
+                                   NUMERO_MOTOR='$motor',
+                                   SERIE_VIN='$vin',
+                                   CHASIS='$chasis',
+                                   TIPO_COMBUTIBLE='$combustible',
+                                   TIPO_VEHICULO='$vehiculo',
+                                   FECHA_INGRESO='$ingreso',
+                                   FECHA_SALIDA='$fabricacion',
+                                   ANIO_MODELO='$anio',
+                                   ESTADO='$estado'
+                                   WHERE ID_VEHICULO='$id'";
         $consulta = mysqli_query($con, $query);
         return $consulta;
     }
