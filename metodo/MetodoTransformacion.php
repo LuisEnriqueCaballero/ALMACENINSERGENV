@@ -1,11 +1,12 @@
 <?php
+include_once '../config/config.php';
 class MetodoTransformacion{
-    public function nuevoprocedimiento($datos){
+    public function nuevoprocedimiento($vehiculo,$proceso,$subpro,$fech){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
 
         $sql="INSERT INTO detalle_proceso(ID_AUTO,ID_PROCESO,ID_SUBPROCESO,FECHA_INICIO) 
-              VALUE('$datos[0]','$datos[1]','$datos[2]','$datos[3]')";
+              VALUE('$vehiculo','$proceso','$subpro','$fech')";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }
@@ -27,16 +28,16 @@ class MetodoTransformacion{
         );
         return $datos;
     }
-    public function actualizadatos($datos){
+    public function actualizadatos($id,$vehiculo,$proceso,$subpro,$fech,$fec_fin){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
         $sql="UPDATE detalle_proceso 
-             SET ID_AUTO='$datos[0]',
-                 ID_PROCESO='$datos[1]',
-                 ID_SUBPROCESO='$datos[2]',
-                 FECHA_INICIO='$datos[3]',
-                 FECHA_FINAL='$datos[4]'
-             WHERE ID_DETALLE_PROCESO ='$datos[5]'";
+             SET ID_AUTO='$vehiculo',
+                 ID_PROCESO='$proceso',
+                 ID_SUBPROCESO='$subpro',
+                 FECHA_INICIO='$fech',
+                 FECHA_FINAL='$fec_fin'
+             WHERE ID_DETALLE_PROCESO ='$id'";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }

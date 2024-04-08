@@ -8,7 +8,7 @@ $(document).ready(function(){
             $.ajax({
                 type:'POST',
                 data:datos,
-                url:'../proceso/Transformacion/InsertTransformacion.php',
+                url:'../Controller/ControllTransformacion.php?ope=1',
                 success:function(r){
                     if(r==1){
                         $('#form_nuevo')[0].reset();
@@ -27,7 +27,7 @@ $(document).ready(function(){
         $.ajax({
             type:'POST',
             data:datos,
-            url:'../proceso/Transformacion/UpdateTransformacion.php',
+            url:'../Controller/ControllTransformacion.php?ope=2',
             success:function(r){
                 if(r==1){
                     $('#bdtransformacion').load('Transformacion/bd_transformacion.php');
@@ -47,7 +47,7 @@ function ObtenerTransformacion(idtransformacion){
     $.ajax({
         type:"POST",
         data:'id='+idtransformacion,
-        url:"../proceso/Transformacion/GetTransformacion.php",
+        url:"../Controller/ControllTransformacion.php?ope=3",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#id').val(datos['ID_DETALLE_PROCESO']);
