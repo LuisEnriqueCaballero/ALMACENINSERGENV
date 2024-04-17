@@ -1,6 +1,7 @@
 <?php
+include_once '../config/config.php';
 class MetodoCliente{
-    public function InsertCliente($datos){
+    public function InsertCliente($tipo,$empresa,$ruc,$telefono,$nombre,$apellido,$dni,$celular,$mail,$departamento,$provincia,$distrito,$direccion){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
 
@@ -17,19 +18,7 @@ class MetodoCliente{
                                   ID_PROVINCIA,
                                   ID_DISTRITO,
                                   DIRECCION) 
-                                  VALUE('$datos[0]',
-                                        '$datos[1]',
-                                        '$datos[2]',
-                                        '$datos[3]',
-                                        '$datos[6]',
-                                        '$datos[5]',
-                                        '$datos[4]',
-                                        '$datos[7]',
-                                        '$datos[8]',
-                                        '$datos[9]',
-                                        '$datos[10]',
-                                        '$datos[11]',
-                                        '$datos[12]')";
+                                  VALUE('$tipo','$empresa','$ruc','$telefono','$nombre','$apellido','$dni','$celular','$mail','$departamento','$provincia','$distrito','$direccion')";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }
@@ -81,24 +70,24 @@ class MetodoCliente{
         );
         return $datos;
     }
-    public function UpdateCliente($datos){
+    public function UpdateCliente($id,$tipo,$empresa,$ruc,$telefono,$nombre,$apellido,$dni,$celular,$mail,$departamento,$provincia,$distrito,$direccion){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
         $sql="UPDATE cliente SET 
-                     TIPO_CLIENTE='$datos[0]',
-                     EMPRESA='$datos[1]',
-                     RUC='$datos[2]',
-                     TELEFONO='$datos[3]',
-                     DNI='$datos[6]',
-                     NOMBRE_PROPIETARIO='$datos[4]',
-                     APELLIDO_PROPIETARIO='$datos[5]',
-                     TELEFONO_PERSONA='$datos[7]',
-                     EMAIL='$datos[8]',
-                     ID_DEPARTAMENTO='$datos[9]',
-                     ID_PROVINCIA='$datos[10]',
-                     ID_DISTRITO='$datos[11]',
-                     DIRECCION='$datos[12]'
-                      WHERE ID_CLIENTE ='$datos[13]'";
+                     TIPO_CLIENTE='$tipo',
+                     EMPRESA='$empresa',
+                     RUC='$ruc',
+                     TELEFONO='$telefono',
+                     DNI='$dni',
+                     NOMBRE_PROPIETARIO='$nombre',
+                     APELLIDO_PROPIETARIO='$apellido',
+                     TELEFONO_PERSONA='$celular',
+                     EMAIL='$mail',
+                     ID_DEPARTAMENTO='$departamento',
+                     ID_PROVINCIA='$provincia',
+                     ID_DISTRITO='$distrito',
+                     DIRECCION='$direccion'
+                      WHERE ID_CLIENTE ='$id'";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }
@@ -134,8 +123,8 @@ class MetodoCliente{
 
         $cadena="<option value='0'>SELECCIONE DISTRITO</option>";
 
-        while($ver=mysqli_fetch_array($consulta)){
-            $cadena=$cadena.'<option value=".$ver[0].">".$ver[1]."</option>';
+        while($ver1=mysqli_fetch_array($consulta)){
+            $cadena=$cadena.'<option value='.$ver1[0].'>'.$ver1[1].'</option>';
         }
         return $cadena;
     }

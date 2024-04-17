@@ -1,10 +1,11 @@
 <?php
+include_once '../config/config.php';
 class MetodoCatgoria{
-    public function insertaCategoria($datos){
+    public function insertaCategoria($categoria){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
 
-        $sql="INSERT INTO categoria(NOMBRE_CATEGORIA) VALUE('$datos[0]')";
+        $sql="INSERT INTO categoria(NOMBRE_CATEGORIA) VALUE('$categoria')";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }
@@ -20,10 +21,10 @@ class MetodoCatgoria{
         );
         return $datos;
     }
-    public function updateCategoria($datos){
+    public function updateCategoria($id,$categoria){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
-        $sql="UPDATE categoria SET NOMBRE_CATEGORIA='$datos[0]' WHERE ID_CATEGORIA ='$datos[1]'";
+        $sql="UPDATE categoria SET NOMBRE_CATEGORIA='$categoria' WHERE ID_CATEGORIA ='$id'";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }

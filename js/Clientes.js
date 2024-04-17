@@ -5,7 +5,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:'../proceso/Cliente/InsertCliente.php',
+            url:'../Controller/Controllcliente.php?ope=1',
             success:function(r){
                 if(r==1){
                     $('#form_nuevo')[0].reset();
@@ -28,7 +28,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:"../proceso/Cliente/UpdateCliente.php",
+            url:"../Controller/Controllcliente.php?ope=2",
             success:function(r){
                 if(r==1){
                     $('#bdcliente').load('Cliente/bd_cliente.php');
@@ -52,7 +52,7 @@ function ObtenerCliente(idcliente){
     $.ajax({
         type:"POST",
         data:'id='+idcliente,
-        url:"../proceso/Cliente/GetCliente.php",
+        url:"../Controller/Controllcliente.php?ope=3",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#id').val(datos['ID_CLIENTE']);
@@ -78,7 +78,7 @@ function viewsCliente(idcliente){
     $.ajax({
         type:"POST",
         data:'id='+idcliente,
-        url:"../proceso/Cliente/GetCliente.php",
+        url:"../Controller/Controllcliente.php?ope=5",
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#idV').html(datos['ID_CLIENTE']);
@@ -114,7 +114,7 @@ function DeleteCliente(idCliente){
             $.ajax({
                 type:"POST",
                 data:"idCliente="+idCliente,
-                url:"../proceso/Cliente/DeleteCliente.php",
+                url:"../Controller/Controllcliente.php?ope=4",
                 success:function(r){
                     if(r==1){
                         $('#bdcliente').load('Cliente/bd_cliente.php');
@@ -135,7 +135,7 @@ $(document).ready(function(){
         $.ajax({
         type:"POST",
         data:"iddepartamento="+$('#departamento').val(),
-        url:"../proceso/Empleado/SeleccioneDepartamento.php",
+        url:"../Controller/Controllcliente.php?ope=6",
         success:function(r){
                 $('#provincia').html(r);
         }
@@ -147,7 +147,7 @@ $(document).ready(function(){
         $.ajax({
         type:"POST",
         data:"idprovincia="+$('#provincia').val(),
-        url:"../proceso/Empleado/SeleccioneProvincia.php",
+        url:"../Controller/Controllcliente.php?ope=7",
         success:function(r){
                 $('#distrito').html(r);
         }

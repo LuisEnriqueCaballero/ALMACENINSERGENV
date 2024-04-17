@@ -1,19 +1,9 @@
 <?php
+include_once '../config/config.php';
 class MetodoProducto{
-    public function insertaProducto($datos){
+    public function insertaProducto($categoria,$moneda,$marca,$producto,$precio,$medida,$cantidad,$agotado,$minimo,$estado){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
-        
-        $agotado=$datos[7];
-        $minimo=$datos[8];
-        $cantidad=$datos[6];
-        if($cantidad<=$agotado){
-            $estado='AGOTADO';
-        }else if($cantidad<$minimo){
-            $estado='MINIMO';
-        }else{
-            $estado='STOCK'; 
-        }
         $sql="INSERT INTO producto(ID_CATEGORIA,
                                    ID_MONEDA,
                                    MARCAR,
@@ -23,17 +13,8 @@ class MetodoProducto{
                                    CANTIDAD_INICIAL,
                                    SIN_STOCK,
                                    STOCK_MINIMO,
-                                   ESTADO) 
-                                   VALUE('$datos[0]',
-                                         '$datos[1]',
-                                         '$datos[2]',
-                                         '$datos[3]',
-                                         '$datos[4]',
-                                         '$datos[5]',
-                                         '$datos[6]',
-                                         '$datos[7]',
-                                         '$datos[8]',
-                                         '$estado')";
+                                   ESTADO)
+                                   VALUE('$categoria','$moneda','$marca','$producto','$precio','$medida','$cantidad','$agotado','$minimo','$estado')";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }
@@ -69,34 +50,21 @@ class MetodoProducto{
         );
         return $datos;
     }
-    public function updateProducto($datos){
+    public function updateProducto($id,$categoria,$moneda,$marca,$producto,$precio,$medida,$cantidad,$agotado,$minimo,$estado){
         $conexion=new Conexion();
         $cnx=$conexion->Conectar();
-
-        
-        $agotado=$datos[7];
-        $minimo=$datos[8];
-        $cantidad=$datos[6];
-        if($cantidad<$agotado){
-            $estado='AGOTADO';
-        }else if($cantidad<$minimo){
-            $estado='MINIMO';
-        }else{
-            $estado='STOCK'; 
-        }
-
         $sql="UPDATE producto SET 
-        ID_CATEGORIA='$datos[0]',
-        ID_MONEDA='$datos[1]',
-        MARCAR='$datos[2]',
-        NOMBRE='$datos[3]',
-        PRECIO_UNITARIO='$datos[4]',
-        UNIDAD_MEDIDA='$datos[5]',
-        CANTIDAD_INICIAL='$datos[6]',
-        SIN_STOCK='$datos[7]',
-        STOCK_MINIMO='$datos[8]',
+        ID_CATEGORIA='$categoria',
+        ID_MONEDA='$moneda',
+        MARCAR='$marca',
+        NOMBRE='$producto',
+        PRECIO_UNITARIO='$precio',
+        UNIDAD_MEDIDA='$medida',
+        CANTIDAD_INICIAL='$cantidad',
+        SIN_STOCK='$agotado',
+        STOCK_MINIMO='$minimo',
         ESTADO='$estado'
-        WHERE ID_PRODUCTO='$datos[9]'";
+        WHERE ID_PRODUCTO='$id'";
         $query=mysqli_query($cnx,$sql);
         return $query;
     }
