@@ -110,7 +110,18 @@ $query = mysqli_query($cnx, $sql);
 <script type="text/javascript">
     $(document).ready(function () {
         $('#example').DataTable({
-            
+            // deshabilitar la búsqueda
+            "searching": false,
+            // deshabilitar el mostrador de filas
+            "lengthChange": false,
+            language: {
+                info: 'CANTIDAD DE REGISTRO _PAGES_',
+                infoEmpty: 'NO HAY PAGINA',
+                infoFiltered: '',
+                lengthMenu: 'MOSTRAR N FILA _MENU_ ',
+                zeroRecords: 'NO SE ENCONTRO REGISTRO',
+                search: 'BUSCAR:'
+            }
         });
     });
 </script>

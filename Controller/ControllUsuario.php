@@ -4,6 +4,8 @@ include_once('../metodo/MetodoUsuario.php');
 $conexion=new Conexion();
 $cnx=$conexion->Conectar();
 $modelusuario = new MetodoUsuario();
+$conexion = new Conexion();
+$cnx = $conexion->Conectar();
 $ope = isset($_GET['ope']) ? $_GET['ope'] : '';
 
 switch ($ope) {

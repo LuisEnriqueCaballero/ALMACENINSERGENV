@@ -1,20 +1,22 @@
 <?php
 // LLAMANDO LA CONFIGURACION
 include_once('../config/config.php');
+
 // METODOS
-class MetodoUsuario{
+class MetodoUsuario
+{
     // QUERY DE INSERTAR DATOS BASE DE DATOS
     public function InserUsuario($area, $password, $email, $nomusuario, $apellido)
     {
-        $conexion=new Conexion();
-        $cnx=$conexion->Conectar();
+        $conexion = new Conexion();
+        $cnx = $conexion->Conectar();
         $sql = "INSERT INTO usuario(ID_AREA,CONTRASENIA,EMAIL,NOMBRE,APELLIDO) VALUES('$area', '$password', '$email', '$nomusuario', '$apellido')";
         $query = mysqli_query($cnx, $sql);
         $cnx->close();
         return $query;
     }
     // QUERY DE OBTENER DATOS
-        public function GetUsuario($idusuario)
+    public function GetUsuario($idusuario)
     {
         $conexion = new Conexion();
         $cnx = $conexion->Conectar();
@@ -44,7 +46,7 @@ class MetodoUsuario{
         return $datos;
     }
     // QUERY DE UPDATE
-    public function UpdateUsuario($area,$encryptado,$email,$usuario,$apellido,$id)
+    public function UpdateUsuario($area, $encryptado, $email, $usuario, $apellido, $id)
     {
         $conexion = new Conexion();
         $cnx = $conexion->Conectar();
@@ -60,7 +62,7 @@ class MetodoUsuario{
         $cnx->close();
         return $query;
     }
-// QUERY DE DELETE
+    // QUERY DE DELETE
     public function DeleteUsuario($idUsuario)
     {
         $conexion = new Conexion();
@@ -84,5 +86,17 @@ class MetodoUsuario{
         } else {
             return 0;
         }
+    }
+    public function listausuario($datosusuario)
+    {
+        $conexion = new Conexion();
+        $cnx = $conexion->Conectar();
+        $sql = "SELECT TU.ID_USUARIO,TU.EMAIL,CONCAT(TU.APELLIDO,' ',TU.NOMBRE),TA.DESCRIPCION FROM usuario TU
+        INNER JOIN area AS TA ON TU.ID_AREA=TA.ID_AREA";
+        if(isset($datosusuario)):
+        $sql.="WHERE CONCAT(TU.APELLIDO,' ',TU.NOMBRE) LIKE '$datosusuario%'";
+        endif;
+        $result = mysqli_query($cnx, $sql);
+        return $result;
     }
 }
