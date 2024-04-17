@@ -5,7 +5,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:'../proceso/Producto/insertProducto.php',
+            url:'../Controller/ControllProducto.php?ope=1',
             success:function(r){
                 if(r==1){
                     $('#form_nuevo')[0].reset();
@@ -28,7 +28,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:'../proceso/Producto/updateProducto.php',
+            url:'../Controller/ControllProducto.php?ope=2',
             success:function(r){
                 if(r==1){
                     $('#bdProducto').load('inventario/bd_producto.php');
@@ -53,7 +53,7 @@ function ObtenerDato(idproducto){
     $.ajax({
         type:"POST",
         data:'id='+idproducto,
-        url:'../proceso/Producto/getProducto.php',
+        url:'../Controller/ControllProducto.php?ope=3',
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#id').val(datos['ID_PRODUCTO']);
@@ -85,7 +85,7 @@ function deletedato(idproducto){
             $.ajax({
                 type:"POST",
                 data:"idproducto="+idproducto,
-                url:'../proceso/Producto/deleteProducto.php',
+                url:'../Controller/ControllProducto.php?ope=4',
                 success:function(r){
                     if(r==1){
                         $('#bdProducto').load('inventario/bd_producto.php');

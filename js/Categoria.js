@@ -5,7 +5,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:'../proceso/Categoria/insertCategoria.php',
+            url:'../Controller/ControllCategoria.php?ope=1',
             success:function(r){
                 if(r==1){
                     $('#form_nuevo')[0].reset();
@@ -28,7 +28,7 @@ $(document).ready(function(){
         $.ajax({
             type:"POST",
             data:datos,
-            url:'../proceso/Categoria/updateCategoria.php',
+            url:'../Controller/ControllCategoria.php?ope=2',
             success:function(r){
                 if(r==1){
                     $('#bdCategoria').load('categoria/bd_categoria.php');
@@ -53,7 +53,7 @@ function ObtenerDato(idcategoria){
     $.ajax({
         type:"POST",
         data:'id='+idcategoria,
-        url:'../proceso/Categoria/getInformation.php',
+        url:'../Controller/ControllCategoria.php?ope=3',
         success:function(r){
             datos=jQuery.parseJSON(r);
             $('#id').val(datos['ID_CATEGORIA']);
@@ -75,7 +75,7 @@ function deletedato(idcategoria){
             $.ajax({
                 type:"POST",
                 data:"idcategoria="+idcategoria,
-                url:'../proceso/Categoria/deleteCategoria.php',
+                url:'../Controller/ControllCategoria.php?ope=4',
                 success:function(r){
                     if(r==1){
                         $('#bdCategoria').load('categoria/bd_categoria.php');
