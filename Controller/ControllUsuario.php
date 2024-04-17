@@ -1,6 +1,8 @@
 <?php
 session_start();
 include_once('../metodo/MetodoUsuario.php');
+$conexion=new Conexion();
+$cnx=$conexion->Conectar();
 $modelusuario = new MetodoUsuario();
 $ope = isset($_GET['ope']) ? $_GET['ope'] : '';
 
@@ -36,11 +38,11 @@ switch ($ope) {
         echo json_encode($modelusuario->GetUsuario($_POST['id']));
         break;
     case '6':
-        $correo=isset($_POST['correo'])?$_POST['correo']:'';
+        $correo=isset($_POST['correo'])?mysqli_real_escape_string($cnx,$_POST['correo']):'';
         $password=isset($_POST['contrasenia'])?$_POST['contrasenia']:'';
         $encryptado=sha1($password);
         $_SESSION['usuario'] = $correo;
-        echo $modelusuario->validarUsuario($_POST['correo'],  $encryptado);
+        echo $modelusuario->validarUsuario($correo,  $encryptado);
         break;
 
     default:
